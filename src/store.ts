@@ -30,16 +30,16 @@ export class MobxState {
         }
     };
 
-    @action choseSuggestion(value: string){
+    @action choseSuggestion(value: string) {
         this.firstName = value;
         this.firstNameSuggestions = [];
     };
 
-    @action updateSecondName = (value: string) => {
+    @action updateSecondName(value: string) {
         this.secondName = value;
     };
 
-    @action updateLastName = (value: string) => {
+    @action updateLastName(value: string) {
         this.lastName = value;
     };
 }

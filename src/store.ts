@@ -30,7 +30,7 @@ export class MobxState {
         }
     };
 
-    @action choseSuggestion = (value: string) => {
+    @action choseSuggestion(value: string){
         this.firstName = value;
         this.firstNameSuggestions = [];
     };

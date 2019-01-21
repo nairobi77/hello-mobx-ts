@@ -6,22 +6,20 @@ import {MobxState} from "./store";
 
 
 export const FirstNameSuggestions = inject('storeX')(observer((props) => {
-
-
-    const suggestions = (storeX: MobxState) => storeX.firstNameSuggestions
-        .map((suggestion: NameSuggestion) =>
-            <Button
-                key={suggestion.value}
-                fullWidth={true}
-                onClick={_ => choseSuggestion(suggestion.value)}
-            >
-                {suggestion.value}
-            </Button>);
-
     return (<div>{suggestions(props.storeX)}</div>);
-
-
-    const choseSuggestion = (name: string) => {
-        props.storeX.choseSuggestion(name);
-    }
 }));
+
+const choseSuggestion = (name: string, storeX: MobxState) => {
+    storeX.choseSuggestion(name);
+}
+
+const suggestions = (storeX: MobxState) => storeX.firstNameSuggestions
+    .map((suggestion: NameSuggestion) =>
+        <Button
+            key={suggestion.value}
+            fullWidth={true}
+            onClick={_ => choseSuggestion(suggestion.value, storeX)}
+        >
+            {suggestion.value}
+        </Button>
+    );

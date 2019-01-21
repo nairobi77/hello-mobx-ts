@@ -11,14 +11,14 @@ import {FirstNameSuggestions} from "./first-name-suggestions";
 class App extends React.Component {
     render() {
         return (
-            <div className="App">
-                <FirstName/>
-                <FirstNameSuggestions/>
-                <SecondName/>
-                <LastName/>
-                <FullName/>
-                <DevTools />
-            </div>
+                <div className="App">
+                    <FirstName/>
+                    <SecondName/>
+                    <LastName/>
+                    <FullName/>
+                    <FirstNameSuggestions/>
+                    <DevTools/>
+                </div>
         );
     }
 }

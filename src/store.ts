@@ -2,7 +2,7 @@ import {action,  computed, observable, runInAction} from "mobx";
 import {getSuggestions, NameSuggestion} from "./dadata-service";
 
 
-class MobxState {
+export class MobxState {
     @observable firstName = '';
     @observable secondName = '';
     @observable lastName = '';

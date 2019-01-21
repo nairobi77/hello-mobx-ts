@@ -1,26 +1,27 @@
 import React from "react";
-import { observer} from 'mobx-react';
-import {store} from "./store";
+import {inject, observer} from 'mobx-react';
 import Button from '@material-ui/core/Button';
+import {NameSuggestion} from "./dadata-service";
+import {MobxState} from "./store";
 
 
-@observer
-export class FirstNameSuggestions extends React.Component {
+export const FirstNameSuggestions = inject('storeX')(observer((props) => {
 
-    public render() {
-        const suggestions = store.firstNameSuggestions
-            .map(suggestion =>
-                <Button
-                    key={suggestion.value}
-                    fullWidth={true}
-                    onClick={_ => this.choseSuggestion(suggestion.value)}
-                >
-                    {suggestion.value}
-                </Button>);
-        return (<div>{suggestions}</div>);
+
+    const suggestions = (storeX: MobxState) => storeX.firstNameSuggestions
+        .map((suggestion: NameSuggestion) =>
+            <Button
+                key={suggestion.value}
+                fullWidth={true}
+                onClick={_ => choseSuggestion(suggestion.value)}
+            >
+                {suggestion.value}
+            </Button>);
+
+    return (<div>{suggestions(props.storeX)}</div>);
+
+
+    const choseSuggestion = (name: string) => {
+        props.storeX.choseSuggestion(name);
     }
-
-    private choseSuggestion(name: string) {
-        store.choseSuggestion(name);
-    }
-}
+}));
